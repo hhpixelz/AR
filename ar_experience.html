@@ -8,23 +8,29 @@
 <body style="margin: 0; overflow: hidden;">
   <a-scene embedded arjs>
     <a-marker preset="hiro">
-      <!-- Erstes 3D-Modell -->
+      <!-- 3D-Modell "vwVan einzelntest.glb" -->
       <a-entity gltf-model="url(https://hhpixelz.github.io/AR/vwVan%20einzelntest.glb)" scale="0.1 0.1 0.1" position="0 0 0"></a-entity>
-      
-      <!-- Zweites 3D-Modell -->
-      <a-entity gltf-model="url(https://hhpixelz.github.io/AR/vwVan%20EvilElveSquad9.glb)" scale="0.1 0.1 0.1" position="0 -0.3 0"></a-entity>
-      
-      <!-- Klickbare Schaltfläche -->
-      <a-box position="0 -0.2 0" color="blue" scale="0.05 0.01 0.05" onclick="redirectToLink()"></a-box>
     </a-marker>
+    
+    <!-- Anderer AR.js-Marker mit URL-Verlinkung -->
+    <a-marker preset="custom">
+      <!-- 3D-Modell "EvilElveSquad9.glb" -->
+      <a-entity gltf-model="url(https://hhpixelz.github.io/AR/EvilElveSquad9.glb)" scale="0.1 0.1 0.1" position="0 0 0" clickable></a-entity>
+    </a-marker>
+    
     <a-entity camera></a-entity>
   </a-scene>
   
   <script>
-    function redirectToLink() {
-      // Fügen Sie hier den Link zu Ihrer Webseite oder Ihrem Instagram-Profil ein
-      window.location.href = 'https://www.example.com';
-    }
+    // Verlinkungsfunktion für den Klick auf das 3D-Modell
+    AFRAME.registerComponent('clickable', {
+      init: function () {
+        this.el.addEventListener('click', function () {
+          // Link zur Webseite oder Instagram-Profil
+          window.location.href = 'https://www.google.com'; // Hier die gewünschte URL einfügen
+        });
+      }
+    });
   </script>
 </body>
 </html>
